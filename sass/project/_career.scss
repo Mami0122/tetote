@@ -1,0 +1,82 @@
+@use "../global" as *;
+
+.c-sectionInner.career {
+  @include mq {
+    padding-inline: 22px;
+  }
+}
+
+.p-careerTraining {
+  margin-block: 85PX 103PX;
+
+  &__introText {
+    line-height: 1.5;
+    margin-bottom: calc(var(--leading-trim));
+    margin-top: calc(66px + var(--leading-trim));
+  }
+
+  &__img {
+    margin-top: 26px;
+  }
+
+  &__listIntroText {
+    line-height: 1.5;
+    margin-bottom: calc(var(--leading-trim));
+    margin-top: calc(21.7px + var(--leading-trim));
+  }
+
+  &__trainingList {
+    margin-top: 52.5px;
+  }
+
+  &__trainingListItem {
+    &+& {
+      margin-top: 21.7px;
+    }
+  }
+
+  &__headingLevel3 {
+    background-color: $color-accent-light;
+    padding: 12px 21px;
+    border-radius: 10px;
+    font-size: rclamp(20, 24);
+    font-weight: bold;
+  }
+
+  &__listItemText {
+    line-height: 1.8;
+    margin-top: 29px;
+  }
+}
+
+@include mq {
+  .p-careerTraining {
+    margin-block: 145px 176px;
+
+    &__introText {
+      margin-top: calc(113px + var(--leading-trim));
+    }
+
+    &__img {
+      margin-top: 48px;
+    }
+
+    &__listIntroText {
+      margin-top: calc(37px + var(--leading-trim));
+    }
+
+    &__trainingList {
+      margin-top: 89px;
+    }
+
+    &__trainingListItem {
+      &+& {
+        margin-top: 37px;
+      }
+    }
+
+    &__listItemText {
+      margin-top: 50px;
+    }
+  }
+}

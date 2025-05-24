@@ -1,0 +1,401 @@
+@use "global" as *;
+@use "foundation";
+
+.l-header {
+  padding: 8px 12px 0;
+  position: absolute;
+  width: 100%;
+  @include z-index(header);
+  transition: background-color 0.2s;
+
+
+  &.active {
+    background-color: $color-main;
+    position: fixed;
+    inset: 0;
+  }
+}
+
+.l-header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.l-header__logo {
+  margin-top: -3px;
+}
+
+.l-header__logoImage {
+  transition: all 0.2s;
+
+  .l-header.active & {
+    display: none;
+  }
+
+  &.sub {
+    display: none;
+
+    .l-header.active & {
+      display: block;
+    }
+  }
+}
+
+.l-header__btns {
+  display: none;
+}
+
+.l-header__btn {
+  padding: 13px 1em;
+  color: #fff;
+  min-width: 126px;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.l-header__btn.job-desc {
+  font-weight: bold;
+  background-color: $color-font;
+  border: 1px solid transparent;
+}
+
+@media (any-hover: hover) {
+  .l-header__btn.job-desc:hover {
+    background-color: #fff;
+    border: 1px solid $color-font;
+    color: $color-font;
+  }
+}
+
+.l-header__btn.job-desc:focus-visible {
+  background-color: #fff;
+  border: 1px solid $color-font;
+  color: $color-font;
+}
+
+.l-header__btn.entry {
+  font-family: $fontEn-main;
+  background-color: $color-accent-light;
+  color: #fff;
+}
+
+@media (any-hover: hover) {
+  .l-header__btn.entry:hover {
+    background-color: $color-accent-dark;
+  }
+}
+
+.l-header__btn.entry:focus-visible {
+  background-color: $color-accent-dark;
+}
+
+.l-header__burger {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  margin-top: 3px;
+}
+
+.l-header__burgerBarWrap {
+  display: inline-block;
+  position: relative;
+  width: 32px;
+  height: 18px;
+
+  .l-header__burger.open & {
+    height: 24px;
+  }
+}
+
+.l-header__burgerBar {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.l-header__burgerBar:first-child {
+  top: 0;
+}
+
+.l-header__burgerBar:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.l-header__burgerBar:last-child {
+  bottom: 0;
+}
+
+.l-header__burger.open {
+  .l-header__burgerBar {
+    background-color: $color-font;
+  }
+
+  .l-header__burgerBar:first-child {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+
+  }
+
+  .l-header__burgerBar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .l-header__burgerBar:last-child {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+
+  }
+}
+
+.l-header__burgerText {
+  font-family: $fontEn-main;
+  color: #fff;
+  font-size: rem(10);
+
+  .l-header.l-header-sub & {
+    color: $color-font;
+  }
+
+  .l-header.active & {
+    opacity: 0;
+  }
+}
+
+// ヘッダーnavメニュー
+.l-header__menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: opacity, visibility 0.25s;
+
+  .l-header.active & {
+    opacity: 1;
+    visibility: visible;
+    position: fixed;
+    width: calc(100vw - 24px);
+    left: 12px;
+    top: calc(90 / 823 * 100vh);
+  }
+}
+
+.l-header__menuLeft {
+  display: none;
+}
+
+.l-header__navListItemLink {
+  padding-block: 13px;
+  border-top: 1px solid $color-accent-light;
+  display: grid;
+  gap: 9px;
+  @include menuHoverStyle;
+}
+
+.l-header__navListItem:last-child .l-header__navListItemLink {
+  border-bottom: 1px solid $color-accent-light;
+}
+
+.l-header__navListItemTextEn {
+  font-family: $fontEn-main;
+  text-transform: uppercase;
+  font-size: rclamp(18, 32);
+  background-clip: text;
+}
+
+.l-header__navListItemTextJa {
+  font-size: rclamp(12, 16);
+  background-clip: text;
+  font-weight: bold;
+}
+
+.l-header__menuBottomBtns {
+  margin-top: 53px;
+}
+
+.l-header__menuBottomBtn {
+  width: 100%;
+  max-width: 248px;
+  color: #fff;
+  padding-block: 14px;
+  text-align: center;
+}
+
+.l-header__menuBottomBtn.job-desc {
+  background-color: $color-font;
+}
+
+.l-header__menuBottomBtn.entry {
+  font-family: $fontEn-main;
+  background-color: $color-accent-light;
+  margin-top: 13px;
+}
+
+// 下層ページ・TOPのスクロール後のヘッダー
+.l-header.l-header-sub {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  padding: 9px 12px;
+
+  .l-header__logoImage {
+    display: none;
+  }
+
+  .l-header__logoImage.sub {
+    display: inline;
+  }
+
+  .l-header__burgerBar {
+    background-color: $color-font;
+  }
+}
+
+//PCのヘッダー・ヘッダーnavメニュー・下層ページ用ヘッダー
+@include mq {
+
+  /*PC用ヘッダー*/
+  .l-header {
+    padding: 26px 30px 0;
+
+    &.active {
+      position: fixed;
+      inset: 0;
+      padding: 28px 30px 0;
+    }
+  }
+
+  .l-header__inner {
+    justify-content: flex-start;
+  }
+
+  .l-header__btns {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-left: auto;
+    margin-top: 12px;
+
+    .l-header.active & {
+      margin-block: 10px;
+    }
+  }
+
+  .l-header__burger {
+    gap: 10px;
+    margin: 5px 0 0 40px;
+  }
+
+  .l-header__burgerBarWrap {
+    height: initial;
+    width: rclamp(35, 52);
+    aspect-ratio: 52 / 30;
+
+    .l-header__burger.open & {
+      height: initial;
+    }
+  }
+
+  //ヘッダーnavメニュー
+  .l-header.active .l-header__menu {
+    width: calc(1178 / 1440 * 100vw);
+    min-width: 708px;
+    max-width: 1178px;
+    top: calc(208 / 823 * 100vh);
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .l-header__menuLeft {
+    display: block;
+    align-self: center;
+    justify-self: end;
+    padding-right: 63px;
+  }
+
+  .l-header__menuRight {
+    padding-left: calc(63 / 1178 * 100%);
+    border-left: 1px solid $color-accent-light;
+  }
+
+  .l-header__navList {
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    column-gap: 30px;
+    grid-template-areas:
+      "aboutUs benefits"
+      "staff career"
+      "blog faq";
+  }
+
+  .l-header__navListItem:first-child {
+    grid-area: aboutUs;
+  }
+
+  .l-header__navListItem:nth-child(2) {
+    grid-area: staff;
+  }
+
+  .l-header__navListItem:nth-child(3) {
+    grid-area: blog;
+    border-bottom: 1px solid #AFA86F;
+  }
+
+  .l-header__navListItem:nth-child(4) {
+    grid-area: benefits;
+  }
+
+  .l-header__navListItem:nth-child(5) {
+    grid-area: career;
+  }
+
+  .l-header__navListItem:last-child {
+    grid-area: faq;
+  }
+
+  .l-header__navListItemLink {
+    padding-block: 23px;
+    gap: 11px;
+  }
+
+  .l-header__menuBottomBtns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 42px;
+    column-gap: 30px;
+    margin-top: 50px;
+  }
+
+  .l-header__menuBottomBtn.entry {
+    margin-top: 0;
+  }
+
+  //下層ページ用ヘッダー
+
+  .l-header.l-header-sub {
+    padding: 28px 26px;
+
+    .l-header__btns {
+      margin-block: 10px;
+    }
+
+    .l-header__burger {
+      margin-block: 5px;
+    }
+  }
+}
+
+@include mq(pc) {
+  .l-header__menuRight {
+    padding-left: calc(63 / 589 * 100%);
+  }
+}

@@ -1,0 +1,43 @@
+@use "./global" as *;
+
+.c-subPageHeader {
+  margin-left: 2px;
+  display: grid;
+  justify-items: start;
+  row-gap: 12px;
+  padding-top: 55px;
+
+  @include mq {
+    row-gap: 18px;
+    padding-top: 75px;
+  }
+
+  * {
+    background-color: #fff;
+  }
+
+  &__heading {
+    display: contents;
+  }
+
+  &__headingEn,
+  &__headingJp {
+    padding: 3px 10px;
+  }
+
+  &__headingEn {
+    font-family: $fontEn-main;
+    font-size: rclamp(32, 64);
+  }
+
+  &__headingJp {
+    font-size: rem(24);
+    font-weight: bold;
+  }
+
+  &__text {
+    padding: 7px 10px;
+    color: $color-accent-dark;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,26 @@
+@use "../global/" as *;
+
+.c-roundedBtn {
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-weight: bold;
+  font-size: rclamp(18, 20);
+  border: 1px solid $color-font;
+  border-radius: 40px;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../images/common/icon-arrow_toBottom.svg) no-repeat center center/contain;
+    flex-shrink: 0;
+  }
+
+  &.bgMainColor {
+    background-color: $color-main;
+  }
+}

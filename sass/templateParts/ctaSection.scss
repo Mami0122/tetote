@@ -1,0 +1,61 @@
+@use "./global" as *;
+
+.t-ctaSection {
+  width: 100%;
+  aspect-ratio: 375 / 250;
+  background: url(../images/common/cta_sp.jpg) no-repeat center center/cover;
+
+  @include mq {
+    aspect-ratio: 1440 / 488.32;
+    background-image: url(../images/common/cta_pc.jpg);
+  }
+
+  @include mq(1537) {
+    max-height: 450px;
+  }
+
+  .c-sectionInner {
+    height: 100%;
+    position: relative;
+  }
+
+  &__contentWrap {
+    position: absolute;
+    width: calc(100% - 34px);
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 24px 24px 29px;
+    text-align: center;
+    font-size: rclamp(14, 16);
+    font-weight: bold;
+
+    @include mq {
+      width: calc(100% - 68px);
+    }
+  }
+
+  &__text {
+    line-height: 2.5;
+
+    @include mq {
+      line-height: 1.5;
+    }
+  }
+
+  &__btn {
+    background-color: $color-accent-light;
+    width: 200px;
+    font-size: rclamp(14, 16);
+    margin-top: 24px;
+    padding-block: 20px;
+
+    @include mq {
+      width: calc(556 / 956 * 100%);
+      padding-block: 27px;
+      margin-top: 31px;
+    }
+  }
+}

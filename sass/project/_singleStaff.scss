@@ -1,0 +1,304 @@
+@use "./global" as *;
+@use "./component";
+
+.c-sectionInner.p-staffInner {
+  @include mq {
+    padding-inline: 24px;
+  }
+}
+
+.p-staffHero {
+  background: $color-main;
+  padding-block: 43px;
+
+  &__inner {
+    padding-inline: 15px;
+
+    @include mq {
+      padding-inline: 24px;
+    }
+  }
+
+  &__contentWrap {
+    display: grid;
+  }
+
+  &__textWrap {
+    order: 2;
+    margin-top: -55px;
+  }
+
+  &__heading {
+    font-weight: bold;
+  }
+
+  &__headingTop,
+  &__headingBottom {
+    display: block;
+    width: fit-content;
+    padding: 3px 5px;
+    background-color: #fff;
+    line-height: 1.5;
+  }
+
+  &__headingTop {
+    font-size: rclamp(25, 36);
+    margin-block: var(--leading-trim);
+  }
+
+  &__headingBottom {
+    font-size: rclamp(18, 24);
+    margin-top: calc(18px + var(--leading-trim));
+    margin-bottom: var(--leading-trim);
+  }
+
+  &__nameEntryYearWrap {
+    margin-top: 12px;
+    transition: all 0.25s ease-in;
+  }
+
+  &__staffRole {
+    color: $color-accent-dark;
+    font-size: rem(14);
+    font-weight: bold;
+    margin-top: 30px;
+  }
+
+  &__staffName {
+    font-size: 1.5rem;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+
+  &__desc {
+    margin-top: 13px;
+    line-height: 1.6;
+  }
+
+  &__staffImg {
+    height: 300px;
+    order: 1;
+
+    >img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+}
+
+@include mq {
+  .p-staffHero {
+    &__contentWrap {
+      grid-template-columns: 1fr calc(286 / 976 * 100%);
+      gap: 0 calc(85 / 976 * 100%);
+      align-items: center;
+    }
+
+    &__textWrap {
+      order: 0;
+      display: block;
+      margin-top: 0;
+    }
+
+    &__headingTop,
+    &__headingBottom {
+      line-height: 1;
+      padding: 3px 10px;
+    }
+
+    &__headingTop {
+      margin-block: 0;
+    }
+
+    &__headingBottom {
+      margin-top: 18px;
+      margin-bottom: 0;
+    }
+
+    &__staffImg {
+      order: 0;
+      height: initial;
+      aspect-ratio: 286 / 368;
+      object-position: 50% 50%;
+    }
+  }
+}
+
+.p-staffInterview {
+  margin-top: 70px;
+
+  &__aside {
+    display: none;
+  }
+
+  &__wpContent {
+    line-height: 1.8;
+
+    h2.wp-block-heading {
+      position: relative;
+      font-size: rclamp(20, 24);
+      font-weight: bold;
+
+      &+* {
+        margin-top: 50px;
+      }
+    }
+
+    *:not(h2)+* {
+      margin-top: 23px;
+    }
+
+    *+h2 {
+      margin-top: calc(23px + var(--leading-trim));
+    }
+  }
+}
+
+@include mq {
+  .p-staffInterview {
+    margin-top: 101px;
+  }
+}
+
+@include mq(pc) {
+  .p-staffInterview {
+
+    &__container {
+      display: grid;
+      grid-template-columns: 1fr 234px;
+      column-gap: calc(56 / 976 * 100%);
+    }
+
+    &__aside {
+      display: block;
+      position: sticky;
+      top: var(--header-height);
+      height: fit-content;
+    }
+
+    &__navList {
+      font-size: rem(14);
+      line-height: 1.5;
+    }
+
+    &__navTitle {
+      font-weight: bold;
+    }
+
+    &__navListItem {
+      margin-left: 0.33em;
+      display: flex;
+      gap: 0.5em;
+      align-items: flex-start;
+
+      .p-staffInterview__navTitle+& {
+        margin-top: 13px;
+      }
+
+      &+& {
+        margin-top: 16px;
+      }
+
+      &::before {
+        content: '•';
+        color: #999;
+        font-size: 1em;
+        line-height: 1.5;
+        margin-top: 0.05em; // 中央に合わせる微調整
+        margin-right: 0.2em;
+      }
+    }
+
+    &__navListItemLink {
+      color: #999;
+      display: inline-block;
+      flex: 1 1 auto;
+
+      &.active {
+        color: $color-font;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/*スクロールバー幅を除いたビューポート幅を取得*/
+$viewport-width: calc(100vw - var(--scrollbar-width));
+
+@include mq(1150) {
+  .p-staffInterview__wpContent h2.wp-block-heading {
+    position: relative;
+
+    // ( (インナー要素幅 - scrollbar-widthを除いたviewport幅 ) ÷ 2 - インナー要素のpadding-left)
+    margin-left: calc((1024px - $viewport-width) / 2 - 24px);
+    padding-left: calc(($viewport-width - 1024px) / 2 + 24px);
+
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: calc((($viewport-width - 1024px) / 2 + 8px));
+      height: 1px;
+      background-color: $color-font;
+    }
+  }
+}
+
+// @include mq(1700) {
+//   .p-staffInterview__wpContent h2.wp-block-heading {
+
+//     margin-left: calc((1024px - ($viewport-width * 0.75)) / 2 - 24px);
+//     padding-left: calc((($viewport-width * 0.75) - 1024px) / 2 + 24px);
+
+//     &::before {
+//       width: calc(((($viewport-width * 0.75) - 1024px) / 2 + 8px));
+//     }
+//   }
+// }
+
+
+@include mq {
+  .p-staffOtherStaffs {
+    .p-staffInner {
+      padding-inline: 19px;
+    }
+
+    &__staffCardList {
+      grid-template-columns: repeat(auto-fill, 246px);
+    }
+
+    .c-staffCard__dividedStaffMessage {
+      font-size: 1rem;
+    }
+  }
+}
+
+.p-staffOtherStaffs {
+  margin-block: 90px;
+
+  &__staffCardList {
+    margin-top: 50px;
+  }
+
+  @include mq {
+    margin-block: 107px 139px;
+  }
+
+  @include mq(1040) {
+    .p-staffOtherStaffs {
+      &__staffCardList {
+        grid-template-columns: repeat(auto-fill, minmax(246px, 300px));
+      }
+
+      .c-staffCard__dividedStaffMessage {
+        font-size: rem(18);
+      }
+    }
+  }
+}

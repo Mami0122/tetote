@@ -1,0 +1,135 @@
+@use "../global" as *;
+
+.c-sectionInner.details {
+  @include mq {
+    padding-inline: 22px;
+  }
+}
+
+.p-detailsBtnsSection {
+  margin-top: rclamp(80, 145);
+
+  &__text {
+    line-height: 1.5;
+    margin-top: calc(66px + var(--leading-trim));
+    margin-bottom: var(--leading-trim);
+  }
+
+  &__btnsList {
+    margin-top: 50px;
+    display: grid;
+    justify-items: center;
+  }
+
+  &__btnsListItem {
+    min-width: 294px;
+    width: fit-content;
+    max-width: 350px;
+
+    &+& {
+      margin-top: 30px;
+    }
+  }
+}
+
+@include mq {
+  .p-detailsBtnsSection {
+    .c-subPageHeadingLevel2 {
+      text-align: center;
+    }
+
+    &__text {
+      text-align: center;
+    }
+
+    &__btnsList {
+      margin-top: 60px;
+    }
+  }
+}
+
+@include mq(pc) {
+  .p-detailsBtnsSection {
+    .c-subPageHeadingLevel2 {
+      text-align: left;
+    }
+
+    &__text {
+      margin-top: 113px;
+      text-align-last: left;
+    }
+
+    &__btnsList {
+      margin-top: 70px;
+    }
+  }
+}
+
+@include mq(1024) {
+  .p-detailsBtnsSection {
+    &__btnsList {
+      margin-top: 70px;
+      display: flex;
+      justify-content: space-between;
+      justify-items: initial;
+    }
+
+    &__btnsListItem {
+      &+& {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.p-detailsTableSection {
+  &:first-of-type {
+    margin-top: 51.5px;
+  }
+
+  &:not(:first-of-type) {
+    margin-top: 57px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 81.5px;
+  }
+
+  &__table {
+    margin-top: 66px;
+  }
+
+  .c-tableBase__tr {
+    border-style: dashed;
+  }
+
+  .c-tableBase__td {
+    line-height: 1.5;
+    margin-top: calc(1.5em + var(--leading-trim));
+    margin-bottom: var(--leading-trim);
+  }
+}
+
+@include mq {
+  .p-detailsTableSection {
+    &:first-of-type {
+      margin-top: 88px;
+    }
+
+    &:not(:first-of-type) {
+      margin-top: 97px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 139px;
+    }
+
+    &__table {
+      margin-top: 113px;
+    }
+
+    .c-tableBase__td {
+      margin-block: var(--leading-trim);
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@use "../global" as *;
+
+.color-main {
+  color: $color-main;
+}
+
+.only-sp {
+  @include mq(tab) {
+    display: none;
+  }
+}
+
+.only-pc {
+  display: none;
+
+  @include mq(tab) {
+    display: block;
+  }
+}
+
+.only-sp-and-pc {
+  @include mq() {
+    display: none;
+  }
+
+  @include mq(pc) {
+    display: block;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.locked {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.d-ib {
+  display: inline-block;
+}
+
+.ta-c {
+  text-align: center;
+}
+
+.lh-15 {
+  line-height: 1.5;
+}
+
+.color-accentDark {
+  color: $color-accent-dark;
+}
+
+.alignself-start {
+  align-self: flex-start;
+}

@@ -1,0 +1,846 @@
+@use "./global" as *;
+@use "./component";
+
+/*--------------------------------------
+Front Page
+--------------------------------------*/
+.p-frontHeadingLevel2 {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+
+  &__textEn {
+    font-family: $fontEn-sub;
+    font-size: rclamp(80, 136);
+    color: #9797971A;
+    display: inline-block;
+    height: rclamp(80, 136);
+  }
+
+  &__textJp {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: rclamp(32, 52);
+    font-weight: bold;
+    white-space: nowrap;
+
+    @include mq {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__underlinedText {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      height: 2px;
+      width: 100%;
+      background-color: $color-font;
+      bottom: 2px;
+      left: 0;
+    }
+  }
+}
+
+.js-fadeIn {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  ;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.js-fadeIn.js-fadeIn--up {
+  transform: translateY(40%);
+  transition:
+    opacity 0.25s linear,
+    transform 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  &.visible {
+    transform: translateY(0);
+  }
+}
+
+.js-fadeIn.js-fadeIn--upSlow {
+  transform: translateY(40%);
+  transition:
+    opacity 0.25s linear,
+    transform 0.85s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  &.visible {
+    transform: translateY(0);
+  }
+}
+
+.js-fadeIn.js-fadeIn--right {
+  transform: translateX(30%);
+  transition:
+    opacity 0.25s linear,
+    transform 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  &.visible {
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* frontHeroセクション*/
+.p-frontHeroSwiper {
+  position: relative;
+  overflow: hidden;
+
+  &__swiperSlide {
+    width: 100%;
+    aspect-ratio: 375 / 667;
+    overflow: hidden;
+
+    @include mq {
+      aspect-ratio: 768 / 560;
+    }
+
+    @include mq(pc) {
+      aspect-ratio: initial;
+      height: 85.5vh
+    }
+  }
+
+  &__Img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-slide-active .p-frontHeroSwiper__Img,
+  .swiper-slide-duplicate-active .p-frontHeroSwiper__Img,
+  .swiper-slide-prev .p-frontHeroSwiper__Img {
+    animation: zoomOut 8s linear 0s normal both;
+  }
+}
+
+.p-frontHeroSwiper__textContainer {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  left: 0;
+  padding-inline: 12px;
+  @include z-index(hero-text);
+
+  @include mq {
+    width: calc(1263 / 1440 * 100%);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 25px;
+    padding: 0;
+  }
+
+  @include mq(1200) {
+    bottom: calc(38 / 823 * 100%);
+  }
+}
+
+.p-frontHeroSwiper__heading {
+  font-family: $fontEn-main;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: rclamp(48, 96);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  line-height: 1.2;
+}
+
+.p-frontHeroSwiper__text {
+  position: relative;
+  display: inline-block;
+  background-color: $color-font;
+  padding: 9px 10px 9px 12px;
+  font-size: rclamp(12, 24);
+  color: #fff;
+  font-weight: bold;
+  margin-top: 18px;
+  margin-left: -12px;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    background-color: $color-font;
+    width: rclamp(14, 30);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(97.5%);
+    clip-path: polygon(0% 100%, 0% 0%, 100% 0%);
+  }
+
+  @include mq {
+    padding: 17px 66px 17px calc(50vw - 50%);
+    margin-left: calc(50% - 50vw);
+  }
+
+  @include mq(1200) {
+    margin-top: 86px;
+  }
+}
+
+.p-frontHeroSwiper__newsLink {
+  display: flex;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 50px;
+  margin-top: 31px;
+
+  @include mq(1200) {
+    margin-top: 63px;
+  }
+}
+
+.p-frontHeroSwiper__newsHeading {
+  flex: 0 1 14.8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-font;
+  color: #fff;
+  font-family: $fontEn-main;
+  text-transform: uppercase;
+  font-size: rclamp(10, 24);
+  border-radius: 50px 0 0 50px;
+
+  @include mq {
+    padding: 19px 60px;
+  }
+}
+
+.p-frontHeroSwiper__newsTitle {
+  flex: 1 1 auto;
+  font-size: rclamp(12, 16);
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  @include mq(tab) {
+    position: relative;
+    padding-left: 15px;
+    padding-right: calc(15px + 91px + 1em);
+  }
+
+  @include mq(pc) {
+    padding-block: 20px;
+    padding-left: calc(90 / 1078 * 100%);
+    padding-right: calc((63 / 1078 * 100%) + 91px + 1em);
+  }
+
+}
+
+.p-frontHeroSwiper__viewMore {
+  display: none;
+  transition: transform 0.5s;
+
+  @include mq(tab) {
+    display: block;
+    font-family: $fontEn-main;
+    font-size: rem(14);
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 17px;
+  }
+
+  @include mq(pc) {
+    right: calc(63 / 1078 * 100%);
+  }
+
+  &::after {
+    @include mq {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: url(../images/common/arrow_w16.svg) no-repeat center center/cover;
+      margin-left: 6px;
+      transition: all 0.3s;
+    }
+
+    .p-frontHeroSwiper__newsLink:hover & {
+      @media (any-hover: hover) {
+        transform: translateX(60%) scale(1.3);
+      }
+    }
+
+    .p-frontHeroSwiper__newsLink:focus-visible & {
+      transform: translateX(50%);
+    }
+  }
+}
+
+/* frontLeadセクション*/
+.p-frontLeadSection {
+  position: relative;
+  margin-top: 41px;
+
+  @include mq {
+    margin-top: 101px;
+  }
+
+  &__swiper {
+    margin-inline: calc(50% - 50vw);
+    padding-bottom: 56px;
+
+    @include mq {
+      padding-bottom: 36px;
+    }
+  }
+
+  &__swiperWrapper {
+    transition-timing-function: linear;
+  }
+
+  &__swiperText {
+    position: absolute;
+    width: 100%;
+    top: 162px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    @include z-index(frontLeadSwiperText);
+
+    @include mq {
+      top: initial;
+      bottom: 9px;
+    }
+  }
+
+  &__swiperDividedText {
+    display: inline-block;
+    padding: 7px 11px;
+    background-color: #fff;
+    font-size: rclamp(24, 40);
+    font-weight: bold;
+  }
+
+  &__swiperSlide {
+    width: 271px;
+    aspect-ratio: 271 / 210;
+    margin-left: 16px;
+    border-radius: 60px;
+    overflow: hidden;
+
+    @include mq {
+      width: calc(506 / 1440 * 100%);
+      aspect-ratio: 506 / 393;
+
+    }
+
+    &.is-offset {
+      transform: translateY(27px);
+
+      @include mq {
+        transform: translateY(36px);
+      }
+    }
+  }
+
+  &__text {
+    background: url(../images/front/front_lead_bg.jpg) no-repeat center top/320px 173px;
+    margin-top: 48px;
+    font-size: rclamp(18, 36);
+    font-weight: bold;
+    line-height: 2.5;
+    text-align: center;
+
+    @include mq {
+      margin-top: 100px;
+      background-size: 100%;
+      background-position: left top;
+      padding-bottom: 46px;
+      line-height: 1.8;
+    }
+
+    @include mq(1048) {
+      margin-inline: -34px;
+    }
+  }
+
+  &__textTop,
+  &__textBottom {
+    display: block;
+  }
+
+  &__textBottom {
+    margin-top: 39px;
+
+    @include mq {
+      margin-top: 52px;
+    }
+  }
+
+  &__btnWrap {
+    text-align: center;
+    margin-top: 39px;
+
+    @include mq {
+      margin-top: 6px;
+    }
+  }
+
+  &__btn {
+    width: 277px;
+
+    @include mq {
+      width: 355px;
+    }
+  }
+}
+
+/*frontMemberセクション*/
+.p-frontMember {
+  margin-top: 71px;
+
+  @include mq {
+    margin-top: 121px;
+  }
+
+  .p-frontHeadingLevel2 {
+    @include mq(1350) {
+      margin-left: calc(166 / 956 * -100%);
+    }
+  }
+
+  &__text {
+    margin-top: 19px;
+    line-height: 1.5;
+    transition-delay: 0.5s;
+
+    @include mq {
+      margin-top: 10px;
+    }
+  }
+
+  &__swiper {
+    margin: 50px calc(50% - 50vw) 0 9px;
+    padding-bottom: 25px;
+
+    @include mq {
+      padding-bottom: 36px;
+      margin-left: 0;
+      margin-top: 52px;
+    }
+  }
+
+  &__swiperSlide {
+    width: rclamp(246, 300);
+    margin-right: rclamp(23, 43);
+  }
+
+
+  &__swiperSlide.is-offset {
+    transform: translateY(25px);
+
+    @include mq {
+      transform: translateY(36px);
+    }
+  }
+
+  &__btnsContainer {
+    margin-top: 64px;
+    text-align: center;
+
+    @include mq {
+      position: relative;
+      margin-top: 80px;
+    }
+  }
+
+  &__btn {
+    width: 277px;
+
+    @include mq {
+      width: 355px;
+    }
+  }
+
+  &__swiperBtns {
+    display: none;
+
+    @include mq(pc) {
+      display: block;
+      width: 136px;
+      height: 58px;
+      position: absolute;
+      top: 50%;
+      right: 19px;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__swiperBtnPrev,
+  &__swiperBtnNext {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__swiperBtnPrev {
+    right: 78px;
+
+    &:before {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
+}
+
+/*frontBenefitセクション*/
+.p-frontBenefit {
+  margin-top: 71px;
+  padding-bottom: 78px;
+  overflow: hidden;
+
+  @include mq {
+    padding-bottom: 107px;
+  }
+
+  .p-frontHeadingLevel2 {
+    max-width: initial;
+    margin-right: calc(50% - 50vw);
+
+    @include mq {
+      width: initial;
+      text-align: center;
+      margin-right: initial;
+    }
+  }
+
+  &__text {
+    margin-top: 36px;
+    line-height: 1.5;
+    transition-delay: 0.5s;
+
+    @include mq {
+      width: initial;
+      text-align: center;
+      margin-top: 27px;
+      margin-bottom: calc((1em - 1lh) / 2);
+    }
+
+    @include mq(pc) {
+      margin-top: 10px;
+    }
+  }
+
+  @include mq {
+    margin-top: 108px;
+  }
+
+  &__benefitList {
+    width: calc(100% - 2px);
+    margin: 51px auto 0;
+
+    @include mq {
+      display: flex;
+      gap: calc(94 / 954 * 100%);
+      margin-top: 114px;
+    }
+  }
+
+  &__benefitListItem {
+    .p-frontBenefit__benefitListItem+& {
+      margin-top: 36px;
+
+      @include mq {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.p-frontBenefit__benefitListItemLink {
+  display: block;
+  position: relative;
+  background: $color-main no-repeat center/ auto;
+  width: 251px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  margin: 0 auto;
+  transition: background-size 0.2s ease-in;
+
+  @include mq {
+    width: 100%;
+  }
+
+  .p-frontBenefit__benefitListItem:first-child & {
+    background-image: url(../images/front/front_benefit01.svg);
+    background-size: 194px auto;
+
+    @include mq {
+      background-size: calc(327 / 430 * 100%);
+    }
+
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-size: calc(194px * 1.1);
+
+        @include mq {
+          background-size: calc((327 / 430 * 100%) * 1.1);
+        }
+
+        .p-frontBenefit__circleBtn::before {
+          transform: translate(calc(-50% + 50%), -50%);
+        }
+      }
+    }
+
+    &:focus-visible {
+      background-size: calc(194px * 1.1);
+
+      @include mq {
+        background-size: calc((327 / 430 * 100%) * 1.1);
+      }
+
+      .p-frontBenefit__circleBtn::before {
+        transform: translate(calc(-50% + 50%), -50%);
+      }
+    }
+
+  }
+
+  .p-frontBenefit__benefitListItem:last-child & {
+    background-image: url(../images/front/front_benefit02.svg);
+    background-size: 202px auto;
+
+    @include mq {
+      background-size: calc(344 / 430 * 100%);
+    }
+
+    &:hover {
+      background-size: calc(202px * 1.1);
+
+      @include mq {
+        background-size: calc((344 / 430 * 100%) * 1.1);
+      }
+
+      .p-frontBenefit__circleBtn::before {
+        transform: translate(calc(-50% + 50%), -50%);
+      }
+    }
+
+  }
+}
+
+.p-frontBenefit {
+  &__benefitTitle {
+    position: absolute;
+    display: inline-block;
+    padding: 7px;
+    background-color: $color-accent-light;
+    font-size: rclamp(24, 32);
+    font-weight: bold;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px;
+    white-space: nowrap;
+
+    @include mq {
+      padding: 5px 7px;
+      bottom: 9px;
+    }
+  }
+
+  &__benefitEnTitle {
+    position: absolute;
+    writing-mode: vertical-lr;
+    font-family: $fontEn-main;
+    font-size: rclamp(14, 24);
+    letter-spacing: 0.15em;
+    right: 13px;
+    top: 0;
+  }
+
+  &__circleBtn {
+    width: 42px;
+    position: absolute;
+    bottom: 39px;
+    right: 13px;
+
+    &::before {
+      transition: transform 0.2s;
+    }
+
+    @include mq {
+      width: 56px;
+      bottom: calc(66 / 430 * 100%);
+      right: calc(20 / 430 * 100%);
+    }
+  }
+}
+
+/*frontBlog*/
+.p-frontBlog {
+  background-color: $color-main;
+  padding-block: 54px 143px;
+  position: relative;
+
+  @include mq {
+    position: static;
+    padding-block: 45px 80px;
+  }
+
+  &__topArea {
+    @include mq {
+      position: relative;
+    }
+  }
+}
+
+.p-frontBlog__moreBtnArea {
+  display: flex;
+  position: absolute;
+  left: 17px;
+  bottom: 33px;
+  align-items: center;
+  column-gap: 13px;
+
+  @include mq {
+    top: 50%;
+    left: initial;
+    right: 20px;
+    bottom: initial;
+    transform: translateY(-50%);
+  }
+
+  @media (any-hover: hover) and (max-width: 767px) {
+    &:hover .p-frontBlog__circleBtn {
+      width: calc(42px * 1.2);
+    }
+  }
+
+  @media (any-hover: hover) and (min-width: 768px) {
+    &:hover .p-frontBlog__circleBtn {
+      width: calc(58px * 1.2);
+    }
+  }
+
+}
+
+.p-frontBlog {
+
+  &__moreText {
+    font-family: $fontEn-main;
+  }
+
+  &__text {
+    margin-top: 19px;
+    line-height: 1.5;
+    transition-delay: 0.5s;
+
+    @include mq {
+      margin-top: 31px;
+    }
+  }
+
+  &__blogList {
+    margin-top: 43px;
+
+    @include mq {
+      margin-top: 61px;
+    }
+  }
+
+}
+
+/*frontRecruitセクション*/
+.p-frontRecruit {
+  background-color: $color-main;
+  padding-top: 33px;
+  overflow: hidden;
+  padding-bottom: 88px;
+
+  @include mq {
+    padding-bottom: 139px;
+  }
+
+  .p-frontHeadingLevel2 {
+    max-width: initial;
+    margin-right: calc(50% - 50vw);
+
+    @include mq {
+      margin-inline: auto;
+    }
+  }
+
+  &__text {
+    line-height: 1.5;
+    margin-top: 19px;
+    transition-delay: 0.5s;
+
+    @include mq {
+      text-align: center;
+      margin-top: calc(10px + ((1em - 1lh) / 2));
+      margin-bottom: calc((1em - 1lh)/ 2);
+    }
+  }
+
+  &__btnsWrap {
+    margin-top: 28px;
+
+    @include mq {
+      margin-top: 63px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px 16px;
+    }
+  }
+
+  &__btn {
+    background-color: #fff;
+    padding: 33px calc(40px + 1em);
+    font-weight: bold;
+
+    &::after {
+      width: 19px;
+      height: 19px;
+      mask-image: url(../images/common/arrow_w20.svg);
+    }
+
+    &:last-child {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+    }
+
+    @include mq(1200) {
+      padding: 50px calc(40px + 1em);
+
+    }
+  }
+
+  &__btn+&__btn {
+    margin-top: 19px;
+
+    @include mq {
+      margin-top: 0;
+    }
+  }
+}

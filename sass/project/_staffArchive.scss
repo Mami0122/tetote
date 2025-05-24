@@ -1,0 +1,77 @@
+@use "./global" as *;
+@use "./component";
+
+.p-staffArchiveHero {
+  background-image: url(../images/otherPage/staff_hero.webp);
+  background-position: right center center;
+
+
+  @include mq(tab) {
+    background-position: right 15% center;
+  }
+
+  @include mq(pc) {
+    background-position: right 10% center;
+  }
+}
+
+.c-sectionInner.staffArchive {
+  @include mq(pc) {
+    padding-inline: 19px;
+  }
+}
+
+.p-staffArchive {
+  margin-block: 80px;
+
+  @include mq {
+    margin-block: 130px 139px;
+
+  }
+
+  &__list {
+    display: grid;
+    align-items: start;
+    justify-items: center;
+    gap: 40px 1em;
+
+    @include mq(tab) {
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: normal;
+      gap: 48px 43px;
+    }
+
+    @include mq(pc) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+}
+
+.p-blogArchivePaginations {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 70px;
+
+  @include mq {
+    margin-top: 98px;
+  }
+
+  &__pagination {
+    display: inline-block;
+    font-size: 14px;
+    width: 58px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 1px solid $color-font;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.current {
+      background-color: $color-font;
+      color: #fff;
+    }
+  }
+}

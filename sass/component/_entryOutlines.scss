@@ -1,0 +1,66 @@
+@use "../global" as *;
+
+.c-entryOutlines {
+  background-color: $color-main;
+  padding-block: 33px 57px;
+  margin-bottom: rclamp(80, 139);
+
+
+  &__container {
+    width: calc(100% - 34px);
+    margin-inline: auto;
+    background-color: #fff;
+    padding-block: 34px 47px;
+    border-radius: 10px;
+  }
+
+  &__inner {
+    padding-inline: 17px;
+  }
+
+
+}
+
+@include mq(tab) {
+  .c-entryOutlines {
+    &__container {
+      width: 90vw;
+      padding-block: 58px 81px;
+    }
+
+    &__inner {
+      padding-inline: 25px;
+    }
+  }
+}
+
+@include mq(pc) {
+  .c-entryOutlines {
+
+    &__container {
+      width: 85vw;
+    }
+
+    &__inner {
+      padding-inline: 40px;
+    }
+
+    &__label {
+      padding-right: 35px;
+    }
+  }
+}
+
+@include mq(1440) {
+  .c-entryOutlines {
+
+    &__container {
+      width: calc(880 / 1440 * 100%);
+      max-width: 880px;
+    }
+
+    &__inner {
+      padding-inline: 71px;
+    }
+  }
+}

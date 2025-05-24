@@ -1,0 +1,100 @@
+@use "../global" as *;
+
+.c-sectionInner.benefit {
+  @include mq {
+    padding-inline: 22px;
+  }
+}
+
+.p-benefitDetails {
+  margin-top: 85px;
+
+  &__table {
+    margin-top: 66px;
+  }
+
+  .c-tableBase__tr {
+    border-style: dashed;
+  }
+}
+
+@include mq {
+  .p-benefitDetails {
+    margin-top: 145px;
+
+    &__table {
+      margin-top: 113px;
+    }
+  }
+}
+
+.p-benefitVoices {
+  margin-block: 90px 81.5px;
+
+  &__contentWrap {
+    display: grid;
+    margin-top: 27px;
+  }
+
+  &__voiceListItem {
+    &+& {
+      margin-top: 30px;
+    }
+  }
+
+  &__headingLevel3 {
+    display: grid;
+    justify-items: start;
+    gap: 13px;
+  }
+
+  &__entryYear {
+    color: $color-accent-dark;
+    font-weight: bold;
+  }
+
+  &__staffName {
+    font-size: rclamp(20, 24);
+    font-weight: bold;
+  }
+
+  &__text {
+    margin-top: 25px;
+    line-height: 1.8;
+  }
+
+  &__img {
+    margin-top: 36px;
+  }
+}
+
+@include mq {
+  .p-benefitVoices {
+    margin-block: 128px 139px;
+
+    &__contentWrap {
+      margin-top: 23px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px calc(46 / 980 * 100%);
+    }
+
+    &__voiceList {
+      display: contents;
+    }
+
+    &__voiceListItem {
+      &+& {
+        margin-top: 0;
+      }
+    }
+
+
+    &__staffName {}
+
+    &__img {
+      grid-column: span 2;
+      margin-top: 0;
+    }
+  }
+
+}

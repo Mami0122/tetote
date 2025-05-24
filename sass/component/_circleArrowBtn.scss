@@ -1,0 +1,60 @@
+@use "global" as *;
+
+.c-circleArrowBtn {
+  width: 58px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  position: relative;
+  transition: all 0.25s ease-in;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    aspect-ratio: 16 / 15;
+    mask-image: url(../images/common/circleArrowBtn-arrow.svg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.25s ease-in;
+  }
+}
+
+.c-circleArrowBtn.bgWhite {
+  background-color: #fff;
+  border: 1px solid $color-font;
+
+  &::before {
+    background-color: $color-font;
+  }
+}
+
+.c-circleArrowBtn.bgBlack {
+  background-color: $color-font;
+
+  &::before {
+    background-color: #fff;
+  }
+}
+
+// @media (any-hover: hover) and (max-width: 767px) {
+//   .c-circleArrowBtn.hoverSizeChange:hover {
+//     width: 42px * 1.2;
+//   }
+// }
+
+// @media (any-hover: hover) and (min-width: 768px) {
+//   .c-circleArrowBtn.hoverSizeChange:hover {
+//     width: 58px * 1.2;
+//   }
+// }
+
+// .c-circleArrowBtn.hoverSizeChange:focus-visible {
+//   width: 42px * 1.2;
+
+//   @include mq {
+//     width: 58px * 1.2;
+//   }
+// }

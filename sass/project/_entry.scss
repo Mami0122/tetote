@@ -1,0 +1,324 @@
+@use "../global" as *;
+
+label {
+  cursor: pointer;
+}
+
+.wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.wpcf7-form-control {
+  display: block;
+  width: 100%;
+}
+
+.wpcf7-form-control[type="submit"] {
+  display: inline-block;
+  width: initial;
+}
+
+.wpcf7-list-item {
+  margin: 0;
+}
+
+.wpcf7-spinner {
+  display: none !important;
+}
+
+.p-entryForm {
+  &__introContainer {
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  &__heading {
+    display: grid;
+    justify-items: center;
+    gap: 29px;
+  }
+
+  &__headingEn {
+    text-transform: uppercase;
+    font-size: rclamp(20, 24);
+  }
+
+  &__headingJa {
+    font-size: rclamp(26, 32);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__introText {
+    line-height: 1.5;
+    margin-top: rclamp(30, 51);
+  }
+
+  &__formWrap {
+    margin-top: rclamp(55, 95);
+    padding-top: 57px;
+    border-top: 1px solid $color-accent-light;
+  }
+
+  &__fieldGroup {
+    display: grid;
+    gap: 1em;
+
+    &+& {
+      margin-top: 27px;
+    }
+
+    &.aimedRole,
+    &.trigger {
+      margin-top: 43px;
+    }
+  }
+
+  &__label.required::after {
+    content: '※';
+    display: inline-block;
+    color: $color-accent-dark;
+  }
+
+  &__inputWrap {
+    >* {
+      width: 100%;
+    }
+  }
+
+  &__input {
+    background-color: $color-main;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid $color-accent-dark;
+  }
+
+  input[type="text"] {
+    height: calc(1rem + 40px);
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    background-color: #FAF7F1;
+    border: 1px solid #AFA86F;
+    display: grid;
+    place-content: center;
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: $color-font;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+    }
+
+    &:checked::before {
+      transform: scale(1);
+    }
+  }
+
+  &__birthInputContainer {
+    display: grid;
+    grid-template-columns: 194px;
+    gap: 15px;
+  }
+
+  &__birthInputWrap.year,
+  &__selectWrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__selectWrap .wpcf7-form-control-wrap {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 11px;
+      height: 6px;
+      background: url(../images/common/icon-narrow-arrow_toBottom.svg) no-repeat center center/cover;
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__input.select {
+    padding-block: 22px;
+    width: 100%;
+    font-size: rem(12);
+  }
+
+  &__fieldset {
+    display: contents;
+  }
+
+  &__radiosContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+
+    label {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+
+    input[type="radio"] {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+
+      &::before {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__input.textarea {
+    height: 240px;
+  }
+
+  &__checkboxesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21px;
+
+    label {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+
+    input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__privacyRow {
+    margin-top: rclamp(60, 100);
+    text-align: center;
+
+    label {
+      display: grid;
+      grid-template-columns: 16px auto;
+      gap: 6px;
+      place-content: center;
+    }
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+
+      &::before {
+        width: 7px;
+        height: 7px;
+      }
+    }
+
+    .wpcf7-list-item-label {
+      font-size: rem(14);
+    }
+  }
+
+  &__submitBtnWrap {
+    margin-top: rclamp(35, 59);
+    text-align: center;
+  }
+
+  &__submitBtn {
+    display: inline-block;
+    padding: 20px 96px;
+    border: 1px solid $color-font;
+    transition: all 0.2s;
+
+    @media (any-hover: hover) {
+      &:not(:disabled):hover {
+        background-color: $color-font;
+        border: 1px solid transparent;
+        color: #fff;
+      }
+    }
+
+    &:focus-visible {
+      background-color: $color-font;
+      border: 1px solid transparent;
+      color: #fff;
+    }
+
+    &:disabled {
+      background-color: rgb(185, 185, 185);
+      border-color: transparent;
+      color: #fff;
+      cursor: not-allowed;
+    }
+  }
+}
+
+
+@include mq(tab) {
+  .p-entryForm {
+    &__headingJa {
+      text-align: left;
+    }
+
+    &__formWrap {
+      max-width: 738px;
+      margin-inline: auto;
+      padding-top: 97px;
+    }
+
+    &__fieldGroup {
+      grid-template-columns: calc(163 / 738 * 100%) calc(575 / 738 * 100%);
+      gap: 0;
+      align-items: center;
+    }
+
+    &__label {
+      line-height: 1.5;
+      margin-block: var(--leading-trim);
+      padding-right: 29px;
+    }
+
+    &__label.birth,
+    &__label.strength {
+      margin-top: 1em;
+    }
+
+    &__birthInputContainer {
+      grid-template-columns: repeat(2, 194px);
+      grid-template-areas:
+        "year ..."
+        "month date";
+    }
+
+    &__birthInputWrap.year {
+      grid-area: year;
+    }
+
+    &__birthInputWrap.month {
+      grid-area: month;
+    }
+
+    &__birthInputWrap.date {
+      grid-area: date;
+    }
+  }
+}
+
+@include mq(pc) {
+  .p-entryForm__label {
+    padding-right: 35px;
+  }
+}

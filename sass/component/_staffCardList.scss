@@ -1,0 +1,15 @@
+@use "global" as *;
+
+.c-staffCardList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(246px, 300px));
+  justify-content: center;
+  justify-items: center;
+  align-items: start;
+  gap: 48px 43px;
+
+
+  @include mq {
+    justify-items: normal;
+  }
+}

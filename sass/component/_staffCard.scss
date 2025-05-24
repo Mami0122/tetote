@@ -1,0 +1,61 @@
+@use "../global/" as *;
+
+.c-staffCard {
+
+  &__link {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+  }
+
+  &__textWrap {
+    position: relative;
+    margin-top: -48px;
+    @include z-index(staffCardTextWrap);
+  }
+
+  &__staffMessage {
+    display: grid;
+    font-weight: bold;
+    font-size: rclamp(16, 20);
+  }
+
+  &__dividedStaffMessage {
+    background-color: $color-accent-light;
+    padding: 7px;
+    justify-self: start;
+
+    .c-staffCard__dividedStaffMessage+& {
+      margin-top: 6px;
+    }
+  }
+
+  &__staffInfo {
+    margin-top: rclamp(13, 16);
+    font-weight: bold;
+    display: grid;
+    row-gap: rclamp(14, 16);
+  }
+
+  &__staffRole {
+    font-size: rclamp(12, 16);
+    display: flex;
+    gap: rclamp(13, 9);
+  }
+
+  &__staffName {
+    font-size: rclamp(20, 24);
+  }
+
+  &__staffImg {
+    aspect-ratio: 246 / 311;
+    border-radius: 30px;
+    overflow: hidden;
+
+    >img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

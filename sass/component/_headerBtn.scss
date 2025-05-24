@@ -1,0 +1,7 @@
+@use "../global" as *;
+
+.c-headerBtn {
+  display: inline-block;
+  font-size: rem(14);
+  transition: all 0.2s ease-in;
+}

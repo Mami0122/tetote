@@ -1,0 +1,40 @@
+$font-base: "Noto Sans JP", sans-serif;
+$fontEn-main: "Viga", sans-serif;
+$fontEn-sub: "Poppins", sans-serif;
+$color-main: #FAF7F1;
+$color-accent-dark: #988C2C;
+$color-accent-light: #AFA86F;
+$color-font: #222222;
+
+:root {
+  --font-base: "Noto Sans JP", sans-serif;
+  --fontEn-main: "Viga", sans-serif;
+  --fontEn-sub: "Poppins", sans-serif;
+  --color-main: #faf7f1;
+  --color-accent: #AFA86F;
+  --color-font: #222222;
+  --header-height: 55px;
+  --leading-trim: calc((1em - 1lh) / 2);
+
+  @supports not (top: 1lh) {
+    :root {
+      --leading-trim: 0px;
+    }
+  }
+
+  @media (width >=768px) {
+    --header-height: 118px;
+  }
+}
+
+$breakpoints: (
+  'tab': '(width >= 768px)',
+  'pc': '(width >= 960px)'
+);
+
+$layers: (
+  header: 100,
+  hero-text: 1,
+  frontLeadSwiperText:2,
+  staffCardTextWrap: 2
+);

@@ -1,0 +1,36 @@
+@use "../global" as *;
+
+.c-breadcrumbs {
+  background: #F0F0F0;
+  font-size: rem(14);
+
+  &__list {
+    max-width: 1024px;
+    padding: 20px 17px;
+    margin-inline: auto;
+    gap: 4px;
+
+    @include mq {
+      padding: 20px 24px;
+    }
+  }
+
+  &__listItem {
+    display: inline-block;
+    line-height: 1.5;
+
+    @include mq {
+      line-height: 1;
+    }
+
+    &+& {
+      margin-left: 4px;
+    }
+
+    &:not(:last-child)::after {
+      content: '>';
+      display: inline-block;
+      margin-left: 4px;
+    }
+  }
+}

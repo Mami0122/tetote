@@ -1,0 +1,232 @@
+@use "global" as *;
+
+.p-blogPost {
+  background-color: $color-main;
+  padding-block: 34px 80px;
+
+  @include mq {
+    padding-block: 34px 139px;
+  }
+
+  &__inner {
+    background-color: #fff;
+    max-width: calc(100% - 40px);
+    margin-inline: auto;
+    padding: 41px 20px 23px;
+
+    @include mq {
+      width: 85%;
+      padding: 41px 40px 23px;
+    }
+
+    @include mq(pc) {
+      max-width: 800px;
+    }
+  }
+
+  &__catDateWrap {
+    font-size: rem(14);
+  }
+
+  &__cat {
+    display: inline-block;
+    margin-right: 19px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background-image: url(../images/common/icon-note.svg);
+      vertical-align: bottom;
+      margin-right: 3px;
+    }
+  }
+
+  &__title {
+    margin-top: 25px;
+    font-size: rclamp(26, 32);
+    line-height: 1.5;
+    font-weight: bold;
+    margin-top: calc(25px + var(--leading-trim));
+    margin-bottom: var(--leading-trim);
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 720 / 411;
+
+    >img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin-top: 41px;
+    }
+  }
+
+  &__content {
+    margin-top: 45px;
+  }
+}
+
+.p-blogPost__wpContent {
+  margin-top: 45px;
+
+  h2.wp-block-heading {
+    font-size: rclamp(20, 24);
+    line-height: 1.5;
+    font-weight: bold;
+
+    &+* {
+      margin-top: calc(50px + var(--leading-trim));
+    }
+  }
+
+  p {
+    line-height: 1.8;
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  li {
+    line-height: 1.8;
+
+    &::marker {
+      font-size: 0.5em;
+    }
+  }
+
+  >*:not(h2)+* {
+    margin-top: calc(23px + var(--leading-trim));
+  }
+}
+
+.p-blogPaginationArea {
+  background: #F0F0F0;
+
+  .c-sectionInner {
+
+    @include mq(1024) {
+      padding-inline: 50px;
+    }
+  }
+
+  &__paginations {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    //heightはタイトルがmaxで3行を想定
+    height: calc((1em * 1.5 * 3 + 6px + 1em) * 2);
+
+    @include mq {
+      flex-direction: row;
+      height: 96px;
+
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      background-color: $color-font;
+      width: 100px;
+      height: 1px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include mq {
+        width: 1px;
+        height: 56px;
+      }
+    }
+  }
+}
+
+.p-blogPaginationArea__pagination {
+  height: 50%;
+  position: relative;
+  padding-block: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 6px;
+
+  @include mq {
+    flex: 0 1 50%;
+    height: 100%;
+  }
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(../images/common/icon-circle-arrow.svg) no-repeat center center/cover;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.prev {
+    padding-inline: 45px 5%;
+
+    &::before {
+      left: 0;
+      transition: all 0.3s;
+    }
+
+    @include mq {
+      margin-right: auto;
+    }
+
+    @include mq(1024) {
+      padding-right: calc(141 / 924 * 100%);
+    }
+
+    &:hover::before {
+      @media (any-hover: hover) {
+        left: -12px;
+      }
+    }
+  }
+
+  &.next {
+    padding-inline: 5% 45px;
+
+    &::before {
+      right: 0;
+      transform: translateY(-50%) rotate(180deg);
+      transition: all 0.3s;
+    }
+
+    @include mq {
+      margin-left: auto;
+    }
+
+    @include mq(1024) {
+      padding-left: calc(141 / 924 * 100%);
+    }
+
+    &:hover::before {
+      @media (any-hover: hover) {
+        right: -12px;
+      }
+    }
+  }
+
+  .p-blogPaginationArea {
+    &__postTitle {
+      line-height: 1.5;
+      margin-block: var(--leading-trim);
+    }
+
+    &__postDate {
+      font-size: rem(12);
+      align-self: flex-start;
+    }
+  }
+}

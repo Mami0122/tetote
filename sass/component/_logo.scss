@@ -1,0 +1,9 @@
+@use "../global/" as *;
+
+.c-logo {
+  width: rclamp(154, 250);
+}
+
+.c-logo__link {
+  display: block;
+}

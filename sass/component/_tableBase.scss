@@ -1,0 +1,67 @@
+@use "../global" as *;
+
+.c-tableBase {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__tr {
+    border-bottom: 1px $color-font;
+  }
+
+  &__tr:not(:first-child) .c-tableBase__th {
+    padding-top: 1em;
+  }
+
+  &__th {
+    font-weight: bold;
+  }
+
+  &__th,
+  &__td {
+    display: block;
+  }
+
+  &__td {
+    margin-top: 1.5em;
+    padding-bottom: 1em;
+  }
+
+  &__listItemInTable {
+    line-height: 1.5;
+    display: flex;
+    gap: 0.5em;
+
+    &::before {
+      content: '•';
+      color: inherit;
+      font-size: 0.8em;
+      line-height: 1.5;
+      margin-right: 0.2em;
+      margin-top: 0.1em;
+    }
+  }
+}
+
+@include mq {
+  .c-tableBase {
+
+    &__th,
+    &__td {
+      display: table-cell;
+    }
+
+    &__td {
+      margin-top: 0;
+    }
+
+    &__tr:not(:first-child) .c-tableBase__th,
+    &__tr:not(:first-child) .c-tableBase__td {
+      padding-block: 36px;
+    }
+
+    &__tr:first-child .c-tableBase__th,
+    &__tr:first-child .c-tableBase__td {
+      padding-bottom: 36px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use "global" as *;
+
+.p-blogArchiveHero {
+  background-image: url(../images/otherPage/blog_hero.webp);
+}
+
+.p-blogArchiveBlogs {
+  margin-block: 80px;
+
+  @include mq {
+    margin-block: 130px 139px;
+  }
+}
+
+.p-blogArchiveBlogs .c-blogCard {
+  margin-top: 1em;
+
+  @include mq {
+    margin-top: 0;
+  }
+}

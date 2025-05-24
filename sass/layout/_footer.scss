@@ -1,0 +1,120 @@
+@use "../global" as *;
+
+.l-footer {
+  background-color: $color-main;
+  padding-block: 164px 24px;
+
+  &__inner {
+    display: grid;
+    justify-items: center;
+  }
+
+  &__navList {
+    text-align: center;
+  }
+
+  &__navListItem {
+    .l-footer__navListItem+& {
+      margin-top: 10px;
+    }
+  }
+
+  &__navLink {
+    display: inline-block;
+    padding-block: 5px;
+    font-size: rclamp(14, 16);
+    font-weight: bold;
+    color: transparent;
+
+    @include menuHoverStyle;
+  }
+
+  &__snsList {
+    display: flex;
+    gap: 16px;
+    margin-top: 45px;
+  }
+
+  &__logo {
+    margin-top: 29px;
+    width: 250px;
+  }
+
+  &__logoLink {
+    display: block;
+  }
+
+  &__copy {
+    display: inline-block;
+    color: #999;
+    font-family: $fontEn-main;
+    font-size: rem(12);
+    margin-top: 49px;
+  }
+
+  &__snsLink {
+    svg path {
+      transition: all 0.3s ease;
+    }
+
+    &:hover svg path {
+      @media (any-hover: hover) {
+        fill: $color-accent-dark;
+      }
+    }
+
+    &:focus-visible svg path {
+      fill: $color-accent-dark;
+    }
+  }
+}
+
+@include mq {
+  .l-footer {
+    padding-block: 198px 61px;
+
+    &__inner {
+      justify-items: start;
+      grid-template-columns: auto 1fr;
+      grid-template-areas: "logo nav"
+        "copyright sns";
+      gap: 61px 108px;
+    }
+
+    &__logo {
+      grid-area: logo;
+      margin-top: 6px;
+      width: rclamp(154, 250);
+    }
+
+    &__nav {
+      grid-area: nav;
+    }
+
+    &__navList {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 15px;
+      gap: 31px 22px;
+    }
+
+    &__navListItem {
+      margin-top: 0;
+    }
+
+    &__navListItem+.l-footer__navListItem {
+      margin-top: 0;
+    }
+
+    &__snsList {
+      grid-area: sns;
+      justify-self: end;
+      margin-top: 0;
+    }
+
+    &__copy {
+      grid-area: copyright;
+      margin-top: 6px;
+    }
+  }
+}

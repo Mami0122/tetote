@@ -1,0 +1,332 @@
+@use "./global" as *;
+@use "./component";
+
+.c-sectionInner.about {
+  @include mq {
+    padding-inline: 22px;
+  }
+}
+
+@include mq(1450) {
+  .p-aboutHero.c-subPageHero {
+    background-position: center bottom;
+  }
+}
+
+/* aboutImportantセクション*/
+.p-aboutImportant {
+  margin-top: 66px;
+
+  &__list {
+    margin-top: 60px;
+    counter-reset: aboutImportantListItem;
+  }
+
+  &__listItem {
+    counter-increment: aboutImportantListItem;
+    background-color: $color-main;
+    padding: 30px 15px;
+    border-radius: 10px;
+  }
+
+  &__listItem+&__listItem {
+    margin-top: 25px;
+  }
+
+  &__listItemTitle {
+    font-size: rem(20);
+    line-height: 1.5;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-start;
+    margin-top: var(--leading-trim);
+
+    &::before {
+      content: counter(aboutImportantListItem);
+      font-size: rem(18);
+      width: 40px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      border: 1px solid $color-font;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 17px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__text {
+    margin-top: 21px;
+    line-height: 1.75;
+  }
+}
+
+@include mq {
+  .p-aboutImportant {
+    &__list {
+      margin-top: 86px;
+    }
+
+    &__listItem {
+      padding-inline: 80px;
+    }
+
+    &__listItem+&__listItem {
+      margin-top: 35px;
+    }
+
+    &__listItemTitle {
+      margin-top: 0;
+      align-items: center;
+
+      &::before {
+        font-size: rem(18);
+        width: 48px;
+      }
+    }
+
+    &__text {
+      line-height: 1.5;
+    }
+  }
+}
+
+/* aboutCeoMessageセクション*/
+.p-aboutCeoMessage {
+  margin-top: 80px;
+
+  &__contentWrap {
+    margin-top: 60px;
+  }
+
+  &__img {
+    width: 329px;
+    height: 385px;
+    margin-inline: auto;
+
+    &>img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left 0 top -9px;
+    }
+  }
+
+  &__messageTitle {
+    font-size: rclamp(24, 32);
+    line-height: 1.5;
+    font-weight: bold;
+    margin-top: 18px;
+  }
+
+  &__text {
+    margin-top: 30px;
+    line-height: 2;
+  }
+
+  &__dividedTextWrap {
+    display: block;
+    margin-top: 31px;
+  }
+
+  &__ceoName {
+    width: calc(185 / 479 * 100%);
+    margin-top: 21px;
+    margin-left: auto;
+  }
+}
+
+@include mq {
+  .p-aboutCeoMessage {
+    margin-top: 125px;
+
+    &__contentWrap {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 109px;
+    }
+
+    &__img {
+      width: initial;
+      height: initial;
+      flex-basis: calc(484 / 980 * 100%);
+      max-width: 484px;
+      margin-inline: 0;
+
+      &>img {
+        height: auto;
+        object-position: initial;
+      }
+    }
+
+    &__textsWrap {
+      flex-basis: calc(479 / 980 * 100%);
+    }
+
+    &__messageTitle {
+      margin-left: -63px;
+    }
+
+    &__text {
+      margin-top: 44px;
+    }
+
+    &__ceoName {
+      margin-left: 0;
+    }
+  }
+}
+
+/* aboutServicesセクション*/
+.p-aboutServices {
+  margin-top: 80px;
+
+  &__sectionTitle {
+    text-align: center;
+  }
+
+  &__introText {
+    margin-top: 44px;
+    line-height: 1.5;
+  }
+
+  &__list {
+    margin-top: 52px;
+  }
+
+  &__listItem {
+
+    &:not(:last-child) {
+      padding-bottom: 30px;
+    }
+
+    &+& {
+      padding-top: 30px;
+      border-top: 1px solid $color-accent-dark;
+    }
+  }
+
+  &__listItemTitle {
+    font-size: rclamp(24, 32);
+    color: $color-accent-dark;
+    font-weight: bold;
+    margin-top: 27px;
+  }
+
+  &__listItemSubTitle {
+    font-size: rclamp(20, 24);
+    font-weight: bold;
+    line-height: 1.5;
+    margin-top: 27px;
+  }
+
+  &__listItemText {
+    line-height: 1.5;
+    margin-top: 27px;
+  }
+}
+
+@include mq {
+  .p-aboutServices {
+    margin-top: 111px;
+
+    &__sectionTitle {
+      text-align: left;
+    }
+
+    &__list {
+      margin-top: 82px;
+    }
+
+    &__listItem {
+      display: flex;
+      justify-content: space-between;
+
+      &:not(:last-child) {
+        padding-bottom: 49px;
+      }
+
+      &+& {
+        padding-top: 49px;
+      }
+    }
+
+    &__listItemImg {
+      flex-basis: calc((462 / 980) * 100%);
+      border-radius: 20px;
+      aspect-ratio: 462 / 264;
+      overflow: hidden;
+
+      &>img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__listItemTextWrap {
+      flex-basis: calc((476 / 980) * 100%);
+    }
+
+    &__listItemTitle {
+      margin-top: 11px;
+    }
+
+    &__listItemSubTitle {
+      margin-top: 40px;
+    }
+
+    &__listItemText {
+      margin-top: 40px;
+      ;
+    }
+  }
+}
+
+@include mq(1110) {
+  .p-aboutServices__listItem {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: -22px;
+    padding-inline: 22px;
+  }
+}
+
+/* aboutComProfileセクション*/
+.p-aboutComProfile {
+  margin-block: 80px;
+
+  &__sectionTitle {
+    text-align: center;
+  }
+
+  &__table {
+    margin-top: 65px;
+
+    .c-tableBase__tr {
+      border-style: dashed;
+    }
+  }
+}
+
+@include mq {
+  .p-aboutComProfile {
+    margin-block: 113px 139px;
+
+    &__sectionTitle {
+      text-align: left;
+    }
+
+    &__table {
+      margin-top: 113px;
+
+      .c-tableBase__th {
+        width: calc((231 / 980) * 100%);
+      }
+
+      .c-tableBase__td {
+        width: calc((749 / 980) * 100%);
+      }
+    }
+  }
+}

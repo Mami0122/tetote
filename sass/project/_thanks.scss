@@ -1,0 +1,22 @@
+@use "../global" as *;
+
+.p-thanks {
+  line-height: 1.5;
+
+  .c-entryOutlines__container {
+    padding-bottom: 95px;
+  }
+
+  &__textWrap {
+    width: fit-content;
+    margin-inline: auto;
+
+    @include mq {
+      text-align: center;
+    }
+  }
+
+  &__text {
+    margin-top: 51px;
+  }
+}

@@ -1,0 +1,141 @@
+@use "../global" as *;
+
+@include mq {
+  body.faq .c-subPageHero {
+    background-position: center bottom;
+  }
+}
+
+.c-sectionInner.faq {
+  @include mq {
+    padding-inline: 22px;
+  }
+}
+
+.p-faqBtns {
+  margin-top: rclamp(80, 145);
+
+  &__btnsList {
+    display: grid;
+    justify-items: center;
+  }
+
+  &__btnsListItem {
+    min-width: 294px;
+    width: fit-content;
+    max-width: 350px;
+
+    &+& {
+      margin-top: 30px;
+    }
+  }
+}
+
+@include mq(1024) {
+  .p-faqBtns {
+    &__btnsList {
+      margin-top: 70px;
+      display: flex;
+      justify-content: space-between;
+      justify-items: initial;
+    }
+
+    &__btnsListItem {
+      &+& {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.p-faqFaqSection {
+  margin-top: rclamp(56, 96);
+
+  &:last-child {
+    margin-bottom: rclamp(81, 139);
+  }
+
+  &__faqGroupWrap {
+    margin-top: rclamp(66, 113);
+  }
+
+  &__faqGroup {
+    border-top: 1px solid $color-accent-light;
+
+    &:last-child {
+      border-bottom: 1px solid $color-accent-light;
+    }
+  }
+
+  &__summary {
+    display: grid;
+    grid-template-columns: 1em 1fr 1em;
+    gap: 1.25em;
+    align-items: baseline;
+    padding-block: 36px;
+    line-height: 1.5;
+    margin-block: var(--leading-trim);
+    cursor: pointer;
+
+    //Safariのデフォルトアイコン用
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: 'Q';
+      display: inline-block;
+      font-family: $fontEn-main;
+      font-size: rclamp(20, 24);
+      color: $color-accent-dark;
+    }
+
+    .p-faqFaqSection__faqGroup[open] & {
+      padding-bottom: 22px;
+    }
+  }
+
+  &__summaryIcon {
+    display: inline-block;
+    background-color: $color-accent-dark;
+    position: relative;
+    width: 1rem;
+    height: 1px;
+    align-self: start;
+    top: 50%;
+
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 1rem;
+      background-color: $color-accent-dark;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transform-origin: center center;
+      transition: all 0.2s ease-out;
+
+      .p-faqFaqSection__faqGroup[open] & {
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+    }
+  }
+
+  &__answer {
+    overflow: hidden;
+  }
+
+  &__answerInner {
+    padding-left: 2.25em;
+    padding-bottom: 36px;
+    line-height: 1.8;
+    margin-block: var(--leading-trim);
+  }
+
+  &__textLink {
+    text-decoration: underline;
+  }
+}

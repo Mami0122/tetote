@@ -1,0 +1,8 @@
+@use "global" as *;
+
+.c-subPageHeadingLevel2 {
+  font-size: rclamp(26, 32);
+  font-weight: bold;
+  line-height: 1.5;
+  margin-block: var(--leading-trim);
+}
