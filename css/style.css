@@ -10,7 +10,7 @@
   --leading-trim: calc((1em - 1lh) / 2);
 }
 @supports not (top: 1lh) {
-  :root :root {
+  :root {
     --leading-trim: 0px;
   }
 }
@@ -425,7 +425,7 @@ dt {
   font-weight: normal;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   a[href^="tel:"] {
     cursor: default;
     pointer-events: none;

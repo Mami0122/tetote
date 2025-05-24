@@ -17,9 +17,7 @@ $color-font: #222222;
   --leading-trim: calc((1em - 1lh) / 2);
 
   @supports not (top: 1lh) {
-    :root {
-      --leading-trim: 0px;
-    }
+    --leading-trim: 0px;
   }
 
   @media (width >=768px) {

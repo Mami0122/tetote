@@ -31,7 +31,7 @@ dt {
   font-weight: normal;
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   a[href^="tel:"] {
     cursor: default;
     pointer-events: none;
