@@ -51,7 +51,7 @@
           </p>
           <div class="c-blogCard__body">
             <span class="c-blogCard__cat"><?php echo $post_cat; ?></span>
-            <h3 class="c-blogCard__title"><?php the_title(); ?></h3>
+            <h2 class="c-blogCard__title"><?php the_title(); ?></h2>
             <time class="c-blogCard__date" datetime=""><?php the_time('Y.m.d'); ?></time>
           </div>
         </a>
