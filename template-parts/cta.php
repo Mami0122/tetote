@@ -6,7 +6,7 @@
         少数精鋭のチームで、<br>
         あなたも会社も一緒に成長していきましょう。
       </p>
-      <a href="" class="t-ctaSection__btn c-textAndArrowBtn no-border inline-flex">ENTRY</a>
+      <a href="<?php echo esc_url( home_url('/entry') ); ?>" class="t-ctaSection__btn c-textAndArrowBtn no-border inline-flex">ENTRY</a>
     </div>
   </div>
 </div>
