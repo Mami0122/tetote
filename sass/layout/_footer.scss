@@ -11,22 +11,20 @@
 
   &__navList {
     text-align: center;
-  }
 
-  &__navListItem {
-    .l-footer__navListItem+& {
+    & > .menu-item + .menu-item{
       margin-top: 10px;
     }
-  }
 
-  &__navLink {
-    display: inline-block;
-    padding-block: 5px;
-    font-size: rclamp(14, 16);
-    font-weight: bold;
-    color: transparent;
+    & > .menu-item a {
+      display: inline-block;
+      padding-block: 5px;
+      font-size: rclamp(14, 16);
+      font-weight: bold;
+      color: transparent;
 
-    @include menuHoverStyle;
+      @include menuHoverStyle;
+    }
   }
 
   &__snsList {
@@ -96,14 +94,10 @@
       flex-wrap: wrap;
       margin-top: 15px;
       gap: 31px 22px;
-    }
 
-    &__navListItem {
-      margin-top: 0;
-    }
-
-    &__navListItem+.l-footer__navListItem {
-      margin-top: 0;
+      & > .menu-item + .menu-item {
+        margin-top: 0;
+      }
     }
 
     &__snsList {

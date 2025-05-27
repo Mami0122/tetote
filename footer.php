@@ -5,38 +5,14 @@
 
  <footer class="l-footer">
   <div class="l-footer__inner c-sectionInner">
-    <nav class="l-footer__nav">
-      <ul class="l-footer__navList">
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/') ); ?>" class="l-footer__navLink">ホーム</a>
-        </li>
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/about-us') ); ?>" class="l-footer__navLink">TETOTEについて</a>
-        </li>
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/staff') ); ?>" class="l-footer__navLink">人を知る</a>
-        </li>
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/career') ); ?>" class="l-footer__navLink">研修制度とキャリアパス</a>
-        </li>
-        </li>
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/benefits') ); ?>" class="l-footer__navLink">福利厚生</a>
-        </li>
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/blog') ); ?>" class="l-footer__navLink">採用ブログ</a>
-        </li>
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/details') ); ?>" class="l-footer__navLink">募集要項</a>
-        </li>
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/faq') ); ?>" class="l-footer__navLink">よくある質問</a>
-        </li>
-        <li class="l-footer__navListItem">
-          <a href="<?php echo esc_url( home_url('/about-us#overview') ); ?>" class="l-footer__navLink">会社概要</a>
-        </li>
-      </ul>
-    </nav>
+    <?php
+      wp_nav_menu( array(
+        'theme_location' => 'footer-menu',
+        'container'=> 'nav',
+        'container_class' => 'l-footer__nav',
+        'menu_class' => 'l-footer__navList',
+      ) );
+    ?>
     <ul class="l-footer__snsList">
       <li class="l-footer__snsListItem">
         <a href="" class="l-footer__snsLink">
