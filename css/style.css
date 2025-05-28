@@ -3358,12 +3358,10 @@ Front Page
 }
 .p-faqFaqSection__faqGroup {
   border-top: 1px solid #AFA86F;
+  padding-bottom: 14px;
 }
 .p-faqFaqSection__faqGroup:last-child {
   border-bottom: 1px solid #AFA86F;
-}
-.p-faqFaqSection__faqGroup {
-  padding-block: 36px;
 }
 .p-faqFaqSection__summary {
   display: grid;
@@ -3374,6 +3372,7 @@ Front Page
   margin-block: var(--leading-trim);
   text-align: justify;
   cursor: pointer;
+  padding-block: 36px 22px;
 }
 .p-faqFaqSection__summary::-webkit-details-marker {
   display: none;
@@ -3414,7 +3413,7 @@ Front Page
   overflow: hidden;
 }
 .p-faqFaqSection__answerInner {
-  padding: 22px 2.25em 0 2.25em;
+  padding: 0 2.25em 22px 2.25em;
   line-height: 1.5;
   margin-block: var(--leading-trim);
   text-align: justify;

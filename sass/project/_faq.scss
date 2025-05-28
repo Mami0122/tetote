@@ -61,14 +61,12 @@
 
   &__faqGroup {
     border-top: 1px solid $color-accent-light;
+    padding-bottom: 14px;
 
     &:last-child {
       border-bottom: 1px solid $color-accent-light;
     }
-  }
 
-  &__faqGroup {
-    padding-block: 36px;
   }
 
   &__summary {
@@ -80,7 +78,8 @@
     margin-block: var(--leading-trim);
     text-align: justify;
     cursor: pointer;
-
+    padding-block: 36px 22px;    
+ 
     //Safariのデフォルトアイコン用
     &::-webkit-details-marker {
       display: none;
@@ -129,7 +128,7 @@
   }
 
   &__answerInner {
-    padding: 22px 2.25em 0 2.25em;
+    padding: 0 2.25em 22px 2.25em;
     line-height: 1.5;
     margin-block: var(--leading-trim);
     text-align: justify;
