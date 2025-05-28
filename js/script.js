@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
       jQuery(window).on("load", function () {
         const headerHeight = jQuery("header").outerHeight();
         const position = target.offset().top - headerHeight - 20;
-        jQuery("html, body").animate({ scrollTop: position }, 500, "swing");
+        jQuery("html, body").animate({ scrollTop: position }, 800, "swing");
 
         // ハッシュを再設定
         history.replaceState(null, '', window.location.pathname + urlHash);
