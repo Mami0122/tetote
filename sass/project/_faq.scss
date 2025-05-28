@@ -67,14 +67,18 @@
     }
   }
 
+  &__faqGroup {
+    padding-block: 36px;
+  }
+
   &__summary {
     display: grid;
     grid-template-columns: 1em 1fr 1em;
     gap: 1.25em;
     align-items: baseline;
-    padding-block: 36px;
     line-height: 1.5;
     margin-block: var(--leading-trim);
+    text-align: justify;
     cursor: pointer;
 
     //Safariのデフォルトアイコン用
@@ -88,10 +92,6 @@
       font-family: $fontEn-main;
       font-size: rclamp(20, 24);
       color: $color-accent-dark;
-    }
-
-    .p-faqFaqSection__faqGroup[open] & {
-      padding-bottom: 22px;
     }
   }
 
@@ -129,10 +129,10 @@
   }
 
   &__answerInner {
-    padding-left: 2.25em;
-    padding-bottom: 36px;
-    line-height: 1.8;
+    padding: 22px 2.25em 0 2.25em;
+    line-height: 1.5;
     margin-block: var(--leading-trim);
+    text-align: justify;
   }
 
   &__textLink {
