@@ -394,6 +394,10 @@ th {
   font-weight: bold;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: "Noto Sans JP", sans-serif;
   color: #222222;
@@ -3740,7 +3744,6 @@ label {
 }
 
 .locked {
-  height: 100vh;
   overflow: hidden;
 }
 

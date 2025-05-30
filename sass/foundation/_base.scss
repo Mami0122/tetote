@@ -1,5 +1,9 @@
 @use '../global' as *;
 
+html{
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: $font-base;
   color: $color-font;
