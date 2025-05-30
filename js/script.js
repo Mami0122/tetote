@@ -136,17 +136,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  window.addEventListener('load', setBlogThumbImgHeight);
-  window.addEventListener('resize', setBlogThumbImgHeight);
-
   //スクロールバーの幅を取得してCSS変数に格納  staffページのみで使用（インナー要素をはみ出す装飾のスタイリングの為）
   const updateScrollBarWidth = () => {
     const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.style.setProperty('--scrollbar-width', `${scrollBarWidth}px`)
   }
 
-  window.addEventListener('load', updateScrollBarWidth);
-  window.addEventListener('resize', updateScrollBarWidth);
+  const debounce = (func, delay) => {
+    // Declare a variable called 'timer' to store the timer ID
+    let timer;
+
+    // Return an anonymous function that takes in any number of arguments
+    return function () {
+      // Clear the previous timer to prevent the execution of 'mainFunction'
+      clearTimeout(timer);
+
+      // Set a new timer that will execute 'mainFunction' after the specified delay
+      timer = setTimeout(() => func.apply(this, arguments), delay);
+    };
+  };
+
+  const debouncedResize = debounce(() =>{
+    setBlogThumbImgHeight();
+    updateScrollBarWidth();
+  }, 200);
+
+  window.addEventListener('load', ()=>{
+    setBlogThumbImgHeight();
+    updateScrollBarWidth();
+  });
+
+  window.addEventListener('resize', debouncedResize);
+
 
   // スムーススクロール
   const hash_anchors = document.querySelectorAll('a[href^="#"]');
