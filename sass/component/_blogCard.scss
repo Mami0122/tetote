@@ -20,17 +20,13 @@
 
   &__thumb {
     width: calc(121/ 341 * 100%);
-    height: 0;
     overflow: hidden;
 
     >img {
       width: 100%;
+      height: 100%;
       object-fit: cover;
       transition: transform 0.25s ease-in-out;
-    }
-
-    &.setHeight>img {
-      height: 100%;
     }
 
     @include mq {
@@ -91,7 +87,7 @@
   &__date {
     font-size: rem(12);
     display: inline-block;
-    margin-top: auto;
+    margin-top: 10px;
   }
 
   .c-blogCard+& {

@@ -124,17 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  //ブログカードの高さを合わせる処理
-  const blogCardthumbs = document.querySelectorAll('.js-blogCard__thumb');
-
-  const setBlogThumbImgHeight = () => {
-    blogCardthumbs.forEach((blogCardThumb) => {
-      const blogCardBody = blogCardThumb.nextElementSibling;
-
-      blogCardThumb.style.height = `${blogCardBody.offsetHeight}px`;
-      blogCardThumb.classList.add('setHeight');
-    });
-  }
 
   //スクロールバーの幅を取得してCSS変数に格納  staffページのみで使用（インナー要素をはみ出す装飾のスタイリングの為）
   const updateScrollBarWidth = () => {
@@ -157,12 +146,10 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const debouncedResize = debounce(() =>{
-    setBlogThumbImgHeight();
     updateScrollBarWidth();
   }, 200);
 
   window.addEventListener('load', ()=>{
-    setBlogThumbImgHeight();
     updateScrollBarWidth();
   });
 
