@@ -28,7 +28,7 @@
       <a href="<?php echo esc_url( home_url('/details') ); ?>" class="l-header__btn job-desc c-headerBtn">募集要項</a>
       <a href="<?php echo esc_url( home_url('/entry') ); ?>" class="l-header__btn entry c-headerBtn">ENTRY</a>
     </div>
-    <button id="js-header-burger" class="l-header__burger" type="button" aria-controls="header-nav" aria-expended="false" aria-label="メニューを開く">
+    <button id="js-header-burger" class="l-header__burger" type="button" aria-controls="js-header-menu" aria-expended="false" aria-label="メニューを開く">
       <span class="l-header__burgerBarWrap">
         <span class="l-header__burgerBar"></span>
         <span class="l-header__burgerBar"></span>
@@ -37,7 +37,7 @@
       <span class="l-header__burgerText">Menu</span>
     </button>
     <!-- ヘッダーnavメニュー -->
-    <div id="js-header-menu" class="l-header__menu" inert>
+    <div id="js-header-menu" class="l-header__menu" aria-hidden="true">
       <div class="l-header__menuLeft">
         <div class="c-logo header__logoLink">
           <img src="<?php echo $template_uri; ?>/images/common/logo-black.png" alt="">

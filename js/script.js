@@ -12,31 +12,29 @@ document.addEventListener("DOMContentLoaded", function () {
     if (this.classList.contains('open')) {
 
       header.classList.add('active');
-      navMenu.inert = false;
+      navMenu.setAttribute('aria-hidden', false);
       burger.setAttribute('aria-expanded', true);
       body.classList.add('locked');
     } else {
-
-      header.classList.remove('active');
-      navMenu.inert = false;
-      burger.setAttribute('aria-expanded', false);
-      body.classList.remove('locked');
+      closeMobileMenu();
     }
   });
+
+  function closeMobileMenu() {
+    header.classList.remove('active');
+    navMenu.setAttribute('aria-hidden', true);
+    burger.setAttribute('aria-expanded', false);
+    body.classList.remove('locked');
+  }
 
   //ヘッダーnavリンクを押してnavメニューを閉じる処理
   const headerNavLinks = document.querySelectorAll('.l-header__navListItemLink');
 
-  function closeMobileMenu(headerNavLinks) {
-    for (const headerNavLink of headerNavLinks) {
-      headerNavLink.addEventListener('click', function () {
-        navMenu.classList.remove('active');
-        burger.classList.remove('active');
-      })
-    }
+  for (const headerNavLink of headerNavLinks) {
+    headerNavLink.addEventListener('click', function () {
+      closeMobileMenu();
+    })
   }
-
-  closeMobileMenu(headerNavLinks);
 
   //TOPページの場合、ファーストビューまでスクロールしたらヘッダーを固定する処理
   const frontHero = document.getElementById('js-frontHeroSwiper');
