@@ -245,7 +245,7 @@
           <span class="p-frontHeadingLevel2__textJp">採用ブログ</span>
           <span class="p-frontHeadingLevel2__textEn">BLOG</span>
         </h2>
-        <a class="p-frontBlog__moreBtnArea" href="<?php echo esc_url( home_url('/blog') ); ?>">
+        <a class="p-frontBlog__moreBtnArea" href="<?php echo esc_url( home_url('/blog') ); ?>" aria-label="採用ブログをもっと見る">
           <span class="p-frontBlog__circleBtn d-ib c-circleArrowBtn bgWhite"></span>
           <span class="p-frontBlog__moreText">VIEW MORE</span>
         </a>
