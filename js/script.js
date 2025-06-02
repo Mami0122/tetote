@@ -326,13 +326,11 @@ document.addEventListener("DOMContentLoaded", function () {
       mergedRequiredInputs.forEach((input) => {
         const tag = input.tagName.toLowerCase();
 
-        //チェックボックス以外の必須項目の入力確認
-        if (input.type === 'text' || input.type === 'email' || input.type === 'tel' || tag === 'textarea' || tag === 'select') {
+        //チェックボックス（個人情報）以外の必須項目の入力確認
+        if (input.type !== 'radio') {
           if (input.value.trim() === '') {
             ExceptRadioInputsFilled = false;
           }
-        } else if (input.type === 'checkbox' && !input.checked) {
-          ExceptRadioInputsFilled = false;
         } else if (input.type === 'radio') {
           if (input.checked) {
             radioCheckedArray.push(true);
@@ -357,13 +355,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    mergedRequiredInputs.forEach((input) => {
+    [...mergedRequiredInputs, acceptance].forEach((input) => {
       input.addEventListener('input', checkInputs);
     });
 
-    if (acceptance) {
-      acceptance.addEventListener('change', checkInputs);
-    }
 
     checkInputs();
   }
